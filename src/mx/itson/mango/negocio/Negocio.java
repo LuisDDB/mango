@@ -11,6 +11,7 @@ package mx.itson.mango.negocio;
 public class Negocio {
     
     public static String  generarCurp(String nombres, String primerApellido, String segundoApellido, String dia, String mes, String year, String sexo) {
+        //Se agrego un nuevo metodo
         String curp = "";
 
         // ----------Sacar la primera letra --------
