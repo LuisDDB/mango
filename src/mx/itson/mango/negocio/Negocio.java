@@ -234,7 +234,7 @@ public class Negocio {
         return verify;
 
     }
-    //aqui voy yo pedro
+    //------ first internal consonant (not initial) of the name------
      public char encontrarPrimeraConsonanteInterna(String nombre) {
       
       /*
