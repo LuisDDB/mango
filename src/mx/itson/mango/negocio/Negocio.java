@@ -9,7 +9,7 @@ public class Negocio {
 
     public String generarCurp(String nombres, String primerApellido, String segundoApellido, String dia, String mes, String year, String sexo) {
         String curp = "";
-
+         //aqui andamos yo el pedro 
         // ----------Sacar la primera letra --------
         String nombresMayusculas = nombres.toUpperCase().replace(" ", "");
         char[] letrasNombres = nombresMayusculas.toCharArray();
