@@ -3,13 +3,25 @@ package mx.itson.mango.negocio;
 /**
  * Contains methods to generate a curp
  *
- * @author Luis, Yolanda, Jose, Sergio and Pedro
+ * @author Luis, Yolanda, José, Sergio and Pedro
  */
 public class Negocio {
 
     public String generarCurp(String nombres, String primerApellido, String segundoApellido, String dia, String mes, String year, String sexo) {
         String curp = "";
-         //aqui andamos yo el pedro 
+         
+        
+        //----- Gets the first letter and the first vowel of the first last name. -----
+        char primeraLetra = primerApellido.charAt(0);
+        char primeraVocalInterna = encontrarPrimeraVocalInterna(primerApellido);
+
+        curp = "" + primeraLetra + primeraVocalInterna;
+        
+        //----- Gets the first letter of the second last name. -----
+        char primeraLetraSegundoApellido = obtenerPrimeraLetraSegundoApellido(segundoApellido);
+
+        curp = curp + primeraLetraSegundoApellido;
+        
          
         // ----------Sacar la primera letra --------
         String nombresMayusculas = nombres.toUpperCase().replace(" ", "");
@@ -94,8 +106,51 @@ public class Negocio {
         curp = curp + fechaSinEspacios;
         return curp;
     }
-    
-         
+    /**
+     *What this method does is find the first internal vowel of the first last name,
+     *enter the for we tell you that "i" starts from position 1 since from that position
+     *the internal letters of the last name start, so the for runs from position 1 to
+     *penultimate position of the length of the last name looking for the first internal vowel.
+     *In each iteration of the loop, the character at position "i" in the string last name is obtained
+     *using apellido.charAt(i), then Character.toUpperCase(o) which is used to convert the character
+     *a capital letter, which allows you to verify the vowels in upper or lower case without distinction.
+     *Then in the if it is verified if the character "c" is a vowel, then it is compared with the 5 uppercase vowels
+     *using the == operator
+     *After "return c" if a vowel is found in the last name, that character is returned as a result and the loop is exited.
+     *If after the loop, no vowel is
+     *found returns a "\0" which is a null character.
+     * @param apellido
+     * @return return c or return "\0"
+     */
+     public static char encontrarPrimeraVocalInterna(String apellido) {
+        for (int i = 1; i < apellido.length() - 1; i++) {
+            char c = Character.toUpperCase(apellido.charAt(i));
+            if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+                return c;
+            }
+
+        }
+        return '\0';
+     }
+     /**
+      * What this method does is find the first letter of the second last name.
+      * Enter the if where it verifies that the "segundoApellido" parameter is not null and that it is not empty.
+      * segundoApellido != null checks if it is not null.
+      * !segundoApellido.isEmpty() checks if it is not empty. This means that it must contain at least one character.
+      * If secondLastName is not null and is not empty, returns the first character of the last name using the charAt(0) method.
+      * This means that the function returns the first letter of the second last name.
+      * But if it happens that secondLastName is null or empty, it enters the else and returns an
+      * when a person does not have a second last name.
+      * @param segundoApellido
+      * @return segundoApellido.charAt(0) or returns character "X".
+      */
+     public static char obtenerPrimeraLetraSegundoApellido(String segundoApellido) {
+        if (segundoApellido != null && !segundoApellido.isEmpty()) {
+            return segundoApellido.charAt(0);
+        } else {
+            return 'X';
+        }
+    }
             
 
     /**
