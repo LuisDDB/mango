@@ -235,6 +235,52 @@ public class Negocio {
 
     }
     //aqui voy yo pedro
+     public char encontrarPrimeraConsonanteInterna(String nombre) {
+      
+      /*
+      * This code block performs the following actions:
+ *
+ * Section 1: Declaration and initialization of variables.
+ * - A variable 'firstConsonant' is declared and assigned the first consonant found in 'name'.
+ * - A variable 'dateValue' is declared and the value '0' is assigned as the default value.
+ * - A variable 'number' is declared and the value '1' is assigned.
+ * - A string 'result' is created by combining 'firstConsonant', 'dateValue' and 'number'.
+ * - The result is displayed in the console along with a message.
+ *
+ * Section 2: Processing 'name' to find the first internal consonant.
+ * - Convert 'name' to lowercase to ensure consistency in processing.
+ * - 'Name' is looped from the second character.
+ * - If 'letter' is not a vowel ('a', 'e', ​​'i', 'o', 'u'), it is returned as the first consonant after the first letter in 'name'.
+ * - If no consonant is found, blank is returned as the default value.
+      */
+      
+       char primeraConsonante = encontrarPrimeraConsonanteInterna(nombre);
+
+
+char valorFecha = '0';  //// Como no tenemos la fecha de nacimiento, establecemos un valor predeterminado '0'.
+
+char numero = '1';
+
+String resultado = String.valueOf(primeraConsonante) + valorFecha + numero;
+
+
+nombre = nombre.toUpperCase();
+
+
+for (int i = 1; i < nombre.length(); i++) {
+    char letra = nombre.charAt(i);
     
 
+    if (letra != 'A' && letra != 'E' && letra != 'I' && letra != 'O' && letra != 'U') {
+        return letra;
+       
+    }
 }
+
+return ' ';
+
+    }
+}  
+    
+
+
