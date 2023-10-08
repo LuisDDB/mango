@@ -235,8 +235,6 @@ public class Negocio {
 
     }
     //------ first internal consonant (not initial) of the name-------
-     public char encontrarPrimeraConsonanteInterna(String nombre) {
-      
       /*
       * This code block performs the following actions:
  *
@@ -253,9 +251,9 @@ public class Negocio {
  * - If 'letter' is not a vowel ('a', 'e', ​​'i', 'o', 'u'), it is returned as the first consonant after the first letter in 'name'.
  * - If no consonant is found, blank is returned as the default value.
       */
-      
+     public char encontrarPrimeraConsonanteInterna(String nombre) {
+       
        char primeraConsonante = encontrarPrimeraConsonanteInterna(nombre);
-
 
 char valorFecha = '0';  //// Como no tenemos la fecha de nacimiento, establecemos un valor predeterminado '0'.
 
