@@ -4,11 +4,12 @@
  */
 package mx.itson.mango.ui;
 
+import javax.swing.JOptionPane;
 import mx.itson.mango.negocio.Negocio;
 
 /**
  *
- * @author luisd
+ * @author luisd, Yolanda, José, Sergio and Pedro
  */
 public class MainJFrame extends javax.swing.JFrame {
 
@@ -42,7 +43,7 @@ public class MainJFrame extends javax.swing.JFrame {
         txfMes = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txfYear = new javax.swing.JTextField();
-        comboStates = new javax.swing.JComboBox<>();
+        cbxStates = new javax.swing.JComboBox<>();
         cbxSexo = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         lblCurp = new javax.swing.JLabel();
@@ -54,53 +55,42 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("CURP | Trámites| gob.mx");
 
         jLabel2.setFont(jLabel2.getFont().deriveFont((jLabel2.getFont().getStyle() & ~java.awt.Font.ITALIC), jLabel2.getFont().getSize()+7));
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre(s)*:");
 
         jLabel3.setFont(jLabel3.getFont().deriveFont((jLabel3.getFont().getStyle() & ~java.awt.Font.ITALIC), jLabel3.getFont().getSize()+7));
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Primer apellido*:");
 
         jLabel4.setFont(jLabel4.getFont().deriveFont((jLabel4.getFont().getStyle() & ~java.awt.Font.ITALIC), jLabel4.getFont().getSize()+7));
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Segundo apellido:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Día");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Mes");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Año");
 
-        comboStates.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        comboStates.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua", "Coahuila", "Colima", "Distrito Federal", "Durango", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "México", "Michoacan", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tlaxcala", "Tamaulipas", "Veracruz", "Yucatán", "Zacatecas", "Nacido en el extranjero" }));
+        cbxStates.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cbxStates.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua", "Coahuila", "Colima", "Distrito Federal", "Durango", "Guanajuato", "Guerrero", "Hidalgo", "Jalisco", "México", "Michoacan", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tlaxcala", "Tamaulipas", "Veracruz", "Yucatán", "Zacatecas", "Nacido en el extranjero" }));
 
         cbxSexo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "H", "M" }));
 
         jLabel9.setFont(jLabel9.getFont().deriveFont((jLabel9.getFont().getStyle() & ~java.awt.Font.ITALIC), jLabel9.getFont().getSize()+7));
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Sexo*:");
 
         lblCurp.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblCurp.setForeground(new java.awt.Color(0, 0, 0));
         lblCurp.setText("Generating curp....");
 
         jLabel12.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Estado*:");
 
         botonBuscar.setBackground(new java.awt.Color(204, 255, 255));
-        botonBuscar.setForeground(new java.awt.Color(0, 0, 0));
         botonBuscar.setText("Buscar");
         botonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +119,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txfDia, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboStates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxStates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(74, 74, 74))
@@ -148,7 +138,7 @@ public class MainJFrame extends javax.swing.JFrame {
                                         .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)))
                                 .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(12, Short.MAX_VALUE))))
+                        .addContainerGap(24, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(211, 211, 211)
                 .addComponent(jLabel1)
@@ -196,7 +186,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel12)
                         .addGap(18, 18, 18)
-                        .addComponent(comboStates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbxStates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(botonBuscar)
                         .addGap(26, 26, 26))))
@@ -224,10 +214,30 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
 
-        String[] cbxSexo = {"H", "F"};
-
+        //Variables
+        String nombres= txfNombres.getText();
+        String primerApellido= txfApellidoPaterno.getText();
+        String segundoApellido= txfApellidoMaterno.getText();
+        String dia= txfDia.getText();
+        String mes= txfMes.getText();
+        String year= txfYear.getText();
+        String state= cbxStates.getItemAt(cbxStates.getSelectedIndex());
+        String sexo= cbxSexo.getItemAt(cbxSexo.getSelectedIndex());
+        
+        //implementacion del metodo
         Negocio negocio = new Negocio();
-        negocio.estados(comboStates.getSelectedItem()+ "");
+        if(negocio.verificarDatos(nombres,primerApellido,segundoApellido,dia,mes,year)){
+                 lblCurp.setText(negocio.generarCurp(nombres, primerApellido, segundoApellido, dia, mes, year, sexo,state));
+        }else{
+            JOptionPane.showMessageDialog(
+                    this, 
+                    "Los campos fueron llenados incorrectamente",
+                    "Algo salio mal!",
+                    JOptionPane.ERROR_MESSAGE
+            );;
+        }
+   
+       
 
         // TODO add your handling code here:
 
@@ -271,7 +281,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscar;
     private javax.swing.JComboBox<String> cbxSexo;
-    private javax.swing.JComboBox<String> comboStates;
+    private javax.swing.JComboBox<String> cbxStates;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
