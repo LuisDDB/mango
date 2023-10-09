@@ -11,166 +11,162 @@ import mx.itson.mango.ui.MainJFrame;
 public class Negocio {
 
     /**
-     * Este metodo genera la curp 
-     * @param nombres nombres de la persona
-     * @param primerApellido Primer apellido de la persona
-     * @param segundoApellido Segundo apellido de la persona
-     * @param dia dia de nacimiento de la persona
-     * @param mes mes de nacimiento de la persona
-     * @param year año de nacimiento de la persona
-     * @param sexo sexo de la persona
-     * @param state estado en el que reside la persona
-     * @return retorn un tipo String curp
+     * This method generates the curp
+     *
+     * @param name names of the person
+     * @param firstLastName First surname of the person
+     * @param secondLastName Person's second last name
+     * @param day day of birth of the person
+     * @param month month of birth of the person
+     * @param year year of birth of the person
+     * @param sex sex of the person
+     * @param state state in which the person resides
+     * @return returns a String curp type
      */
-    public String generarCurp(String nombres, String primerApellido, String segundoApellido, String dia, String mes, String year, String sexo, String state) {
+    public String generarCurp(String name, String firstLastName, String secondLastName, String day, String month, String year, String sex, String state) {
         // Igualar todas las variables a mayusculas y limpiar el texto
 
-        nombres = nombres.toUpperCase().replace(" ", "").replace("Á", "A").replace("É", "E").replace("Í", "I").replace("Ó", "O").replace("Ú", "U");
-        primerApellido = primerApellido.toUpperCase().replace(" ", "").replace("Á", "A").replace("É", "E").replace("Í", "I").replace("Ó", "O").replace("Ú", "U");
-        segundoApellido = segundoApellido.toUpperCase().replace(" ", "").replace("Á", "A").replace("É", "E").replace("Í", "I").replace("Ó", "O").replace("Ú", "U");
-        dia = dia.replace(" ", "");
-        mes = mes.replace(" ", "");
+        name = name.toUpperCase().replace(" ", "").replace("Á", "A").replace("É", "E").replace("Í", "I").replace("Ó", "O").replace("Ú", "U");
+        firstLastName = firstLastName.toUpperCase().replace(" ", "").replace("Á", "A").replace("É", "E").replace("Í", "I").replace("Ó", "O").replace("Ú", "U");
+        secondLastName = secondLastName.toUpperCase().replace(" ", "").replace("Á", "A").replace("É", "E").replace("Í", "I").replace("Ó", "O").replace("Ú", "U");
+        day = day.replace(" ", "");
+        month = month.replace(" ", "");
         year = year.replace(" ", "");
         String curp;
 
         //----- Gets the first letter and the first vowel of the first last name. -----
-        char primeraLetra = primerApellido.charAt(0);
-        char primeraVocalInterna = encontrarPrimeraVocalInterna(primerApellido);
+        char firstLetter = firstLastName.charAt(0);
+        char firstVowelInternal = findFirstVowelInternal(firstLastName);
 
-        curp = "" + primeraLetra + primeraVocalInterna;
+        curp = "" + firstLetter + firstVowelInternal;
 
         //----- Gets the first letter of the second last name. -----
-        char primeraLetraSegundoApellido = obtenerPrimeraLetraSegundoApellido(segundoApellido);
+        char firstLetterSecondSurname = getFirstLetterSecondLastName(secondLastName);
 
-        curp = curp + primeraLetraSegundoApellido;
+        curp = curp + firstLetterSecondSurname;
 
-        // ----------Sacar la primera letra --------
-        char[] letrasNombres = nombres.toCharArray();
-
-        // ------- en caso de que sea nombre compuesto que inicie con Joso o maria
-        if (nombres.startsWith("JOSE") && nombres.length() > 4) {
-            nombres = nombres.replace("JOSE", "");
-            curp = curp + letrasNombres[4];
-        } else if (nombres.startsWith("MARIA") && nombres.length() > 5) {
-            nombres = nombres.replace("MARIA", "");
-            curp = curp + letrasNombres[5];
+        // ----------Take out the first letter --------
+        char[] lettersNames = name.toCharArray();
+// ------- in case it is a compound name that begins with Joso or Maria
+        if (name.startsWith("JOSE") && name.length() > 4) {
+            name = name.replace("JOSE", "");
+            curp = curp + lettersNames[4];
+        } else if (name.startsWith("MARIA") && name.length() > 5) {
+            name = name.replace("MARIA", "");
+            curp = curp + lettersNames[5];
         } else {
-            curp = curp + letrasNombres[0];
+            curp = curp + lettersNames[0];
         }
 
-        //---------Sacar juntar fechas de nacimiento --------
-        String mesMayusculas = mes.toUpperCase();
-        String fechaSinEspacios;
-        String mesNumero = "";
+        //---------Put together dates of birth --------
+        String monthCapital = month.toUpperCase();
+        String dateWithoutSpaces;
+        String monthNumber = "";
 
-        // ultimo numeros de los años 
+        // last numbers of the years
         char[] letrasyear = year.toCharArray();
-        fechaSinEspacios = "" + letrasyear[2] + letrasyear[3];
+        dateWithoutSpaces = "" + letrasyear[2] + letrasyear[3];
 
-        //meses en numero
-        if (mesMayusculas.contains("E") || mesMayusculas.contains("O") || mesMayusculas.contains("A")) {
-            switch (mesMayusculas) {
+        //months in number
+        if (monthCapital.contains("E") || monthCapital.contains("O") || monthCapital.contains("A")) {
+            switch (monthCapital) {
                 case "ENERO":
-                    mesNumero = "01";
+                    monthNumber = "01";
                     break;
                 case "FEBRERO":
-                    mesNumero = "02";
+                    monthNumber = "02";
                     break;
                 case "MARZO":
-                    mesNumero = "03";
+                    monthNumber = "03";
                     break;
                 case "ABRIL":
-                    mesNumero = "04";
+                    monthNumber = "04";
                     break;
                 case "MAYO":
-                    mesNumero = "05";
+                    monthNumber = "05";
                     break;
                 case "JUNIO":
-                    mesNumero = "06";
+                    monthNumber = "06";
                     break;
                 case "JULIO":
-                    mesNumero = "07";
+                    monthNumber = "07";
                     break;
                 case "AGOSTO":
-                    mesNumero = "08";
+                    monthNumber = "08";
                     break;
                 case "SEPTIEMBRE":
-                    mesNumero = "09";
+                    monthNumber = "09";
                     break;
                 case "OCTUBRE":
-                    mesNumero = "10";
+                    monthNumber = "10";
                     break;
                 case "NOVIEMBRE":
-                    mesNumero = "11";
+                    monthNumber = "11";
                     break;
                 case "DICIEMBRE":
-                    mesNumero = "12";
+                    monthNumber = "12";
                     break;
                 default:
                     MainJFrame mJFrame = new MainJFrame();
                     JOptionPane.showMessageDialog(
                             mJFrame,
-                            "El correo o contraseña son incorrectos",
-                            "Algo salio mal!",
+                            "The email or password is incorrect",
+                            "Something went wrong!",
                             JOptionPane.ERROR_MESSAGE
                     );
 
             }
-            fechaSinEspacios = fechaSinEspacios + mesNumero;
+            dateWithoutSpaces = dateWithoutSpaces + monthNumber;
         } else {
-            if (mes.length() == 1) {
-                fechaSinEspacios = fechaSinEspacios + "0" + mes;
+            if (month.length() == 1) {
+                dateWithoutSpaces = dateWithoutSpaces + "0" + month;
             } else {
-                fechaSinEspacios = fechaSinEspacios + mes;
+                dateWithoutSpaces = dateWithoutSpaces + month;
             }
 
         }
         //Dias en numero
-        if (dia.length() == 1) {
-            fechaSinEspacios =fechaSinEspacios + "0" + dia;
+        if (day.length() == 1) {
+            dateWithoutSpaces = dateWithoutSpaces + "0" + day;
         } else {
-            char[] carateresDias = dia.toCharArray();
-            fechaSinEspacios = fechaSinEspacios + carateresDias[dia.length() - 2] + carateresDias[dia.length() - 1];
+            char[] charDay = day.toCharArray();
+            dateWithoutSpaces = dateWithoutSpaces + charDay[day.length() - 2] + charDay[day.length() - 1];
         }
-        curp = curp + fechaSinEspacios;
+        curp = curp + dateWithoutSpaces;
 
-        if (sexo.equals("H")) {
+        if (sex.equals("H")) {
             curp = curp + "H";
         } else {
             curp = curp + "M";
         }
 
-        String codigoEstado = estados(state);
-        curp = curp + codigoEstado;
+        String statecode = estados(state);
+        curp = curp + statecode;
 
-        char primeraConsonanteNoInicial1 = encontrarSegundaConsonanteInterna1(primerApellido);
+        char firstConsonantNotInitial1 = findSecondConsonantInternal1(firstLastName);
 
-        curp = curp + primeraConsonanteNoInicial1;
+        curp = curp + firstConsonantNotInitial1;
 
         //----- Gets the second letter of the second last name. -----
-        char primeraConsonanteNoInicial = encontrarSegundaConsonanteInterna(segundoApellido);
+        char firstConsonantNotInitial = findSecondConsonantInternal(secondLastName);
 
-        curp = curp + primeraConsonanteNoInicial;
+        curp = curp + firstConsonantNotInitial;
 
-        char primeraConsonante = encontrarPrimeraConsonanteInterna(nombres);
-        curp = curp + primeraConsonante;
+        char firstConsonant = findSecondConsonantInternal(name);
+        curp = curp + firstConsonant;
 
-        char valorFecha = ' ';
+        char valueDate = ' ';
         int anoNacimiento = Integer.parseInt(year);
 
         if (anoNacimiento >= 2000) {
-            valorFecha = 'A'; // Si es 2000 o posterior.
+            valueDate = 'A'; // Si es 2000 o posterior.
         } else {
-            valorFecha = '0'; // Si es anterior a 2000.
+            valueDate = '0'; // Si es anterior a 2000.
         }
-        curp = curp + valorFecha + 1;
+        curp = curp + valueDate + 1;
         return curp;
     }
 
-    
-    
-    
-    
     /**
      * What this method does is find the first internal vowel of the first last
      * name, enter the for we tell you that "i" starts from position 1 since
@@ -187,12 +183,12 @@ public class Negocio {
      * loop is exited. If after the loop, no vowel is found returns a "\0" which
      * is a null character.
      *
-     * @param apellido
+     * @param lastName
      * @return return c or return "\0"
      */
-    public static char encontrarPrimeraVocalInterna(String apellido) {
-        for (int i = 1; i < apellido.length() - 1; i++) {
-            char c = Character.toUpperCase(apellido.charAt(i));
+    public static char findFirstVowelInternal(String lastName) {
+        for (int i = 1; i < lastName.length() - 1; i++) {
+            char c = Character.toUpperCase(lastName.charAt(i));
             if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
                 return c;
             }
@@ -200,10 +196,6 @@ public class Negocio {
         }
         return '\0';
     }
-    
-    
-    
-    
 
     /**
      * What this method does is find the first letter of the second last name.
@@ -217,28 +209,26 @@ public class Negocio {
      * secondLastName is null or empty, it enters the else and returns an when a
      * person does not have a second last name.
      *
-     * @param segundoApellido
+     * @param secondSurname
      * @return segundoApellido.charAt(0) or returns character "X".
      */
-    public static char obtenerPrimeraLetraSegundoApellido(String segundoApellido) {
-        if (segundoApellido != null && !segundoApellido.isEmpty()) {
-            return segundoApellido.charAt(0);
+    public static char getFirstLetterSecondLastName(String secondSurname) {
+        if (secondSurname != null && !secondSurname.isEmpty()) {
+            return secondSurname.charAt(0);
         } else {
             return 'X';
         }
     }
-    
-    
-    
-    
+
     /**
-     * Este metodo obtine la segunda letra en caso de no tener retorna X
-     * @param segundoApellido
-     * @return retorna un tipo char
+     * This method obtains the second letter if it does not have X, it returns
+     *
+     * @param secondSurname
+     * @return returns a char type
      */
-    public static char encontrarSegundaConsonanteInterna(String segundoApellido) {
-        for (int i = 1; i < segundoApellido.length(); i++) {
-            char c = Character.toUpperCase(segundoApellido.charAt(i));
+    public static char findSecondConsonantInternal(String secondSurname) {
+        for (int i = 1; i < secondSurname.length(); i++) {
+            char c = Character.toUpperCase(secondSurname.charAt(i));
             if (c != 'A' && c != 'E' && c != 'I' && c != 'O' && c != 'U') {
                 return c;
             }
@@ -246,19 +236,17 @@ public class Negocio {
         }
         return 'X';
     }
-    
-    
-    
-    /**
-     * Este metodo obtine la segunda letra consonante 
-     * @param Apellido apellido de la persona
-     * @return retorna un tipo char
-     */
 
-    public static char encontrarSegundaConsonanteInterna1(String Apellido) {
+    /**
+     * This method obtains the second consonant letter
+     *
+     * @param lastName person's last name
+     * @return returns a char type
+     */
+    public static char findSecondConsonantInternal1(String lastName) {
         char c = 'a';
-        for (int i = 1; i < Apellido.length(); i++) {
-            c = Character.toUpperCase(Apellido.charAt(i));
+        for (int i = 1; i < lastName.length(); i++) {
+            c = Character.toUpperCase(lastName.charAt(i));
             if (c != 'A' && c != 'E' && c != 'I' && c != 'O' && c != 'U') {
                 break;
             }
@@ -349,76 +337,74 @@ public class Negocio {
 
     }
 
-    
-    
     /**
-    * This method finds the first consonant in a text string and returns it.
-  * If no consonant is found, returns a blank (' ').
-  *
-  * @param name The text string in which to search for the first consonant.
-  * @return The first consonant found or a blank if none are found.
+     * This method finds the first consonant in a text string and returns it. If
+     * no consonant is found, returns a blank (' ').
+     *
+     * @param name The text string in which to search for the first consonant.
+     * @return The first consonant found or a blank if none are found.
      */
-    public char encontrarPrimeraConsonanteInterna(String nombre) {
+    public char findFirstInternalConsonant(String name) {
 
-        nombre = nombre.toUpperCase();
+        name = name.toUpperCase();
 
-        for (int i = 1; i < nombre.length(); i++) {
-            char letra = nombre.charAt(i);
+        for (int i = 1; i < name.length(); i++) {
+            char letter = name.charAt(i);
 
-            if (letra != 'A' && letra != 'E' && letra != 'I' && letra != 'O' && letra != 'U') {
-                return letra;
+            if (letter != 'A' && letter != 'E' && letter != 'I' && letter != 'O' && letter != 'U') {
+                return letter;
             }
         }
 
         return ' ';
     }
-    
-    
-    
+
     /**
-     * Verifica si los datos que ingresa son correspondientes a su uso para la curp
-     * @param nombres nombres del usuario
-     * @param primerApellido Primer apellido del usuario
-     * @param segundoApellido Segundo apellido del usuario
-     * @param dia Dia de nacimiento
-     * @param mes mes de nacimiento
-     * @param year año de nacimietno
-     * @return retorna un tipo boolean 
+      * Verifies whether the data you enter corresponds to its use for the
+      * curp
+      *
+      * @param name usernames
+      * @param firstLastName User's first last name
+      * @param secondLastName User's second last name
+      * @param day Birth day
+      * @param month month of birth
+      * @param year year of birth
+      * @return returns a boolean type
      */
-    public boolean verificarDatos(String nombres, String primerApellido, String segundoApellido, String dia, String mes, String year) {
-        if (nombres.isEmpty()||nombres.isEmpty()||nombres.contains("1")||nombres.contains("2")
-                ||nombres.contains("3")||nombres.contains("4")||nombres.contains("5")
-                ||nombres.contains("6")||nombres.contains("7")||nombres.contains("8")
-                ||nombres.contains("9")||nombres.contains("0")|| nombres.contains("-")|| nombres.contains("*")|| nombres.contains("/")) {
+    public boolean verificarDatos(String name, String firstLastName, String secondLastName, String day, String month, String year) {
+        if (name.isEmpty() || name.isEmpty() || name.contains("1") || name.contains("2")
+                || name.contains("3") || name.contains("4") || name.contains("5")
+                || name.contains("6") || name.contains("7") || name.contains("8")
+                || name.contains("9") || name.contains("0") || name.contains("-") || name.contains("*") || name.contains("/")) {
             return false;
         }
-        if (primerApellido.isEmpty()||primerApellido.contains("1")||primerApellido.contains("2")
-                ||primerApellido.contains("3")||primerApellido.contains("4")||primerApellido.contains("5")
-                ||primerApellido.contains("6")||primerApellido.contains("7")||primerApellido.contains("8")
-                ||primerApellido.contains("9")||primerApellido.contains("0")
-                || primerApellido.contains("-")|| primerApellido.contains("*")|| primerApellido.contains("/")) {
+        if (firstLastName.isEmpty() || firstLastName.contains("1") || firstLastName.contains("2")
+                || firstLastName.contains("3") || firstLastName.contains("4") || firstLastName.contains("5")
+                || firstLastName.contains("6") || firstLastName.contains("7") || firstLastName.contains("8")
+                || firstLastName.contains("9") || firstLastName.contains("0")
+                || firstLastName.contains("-") || firstLastName.contains("*") || firstLastName.contains("/")) {
             return false;
         }
-        if (segundoApellido.contains("1")||segundoApellido.contains("2")||segundoApellido.contains("3")
-                ||segundoApellido.contains("4")||segundoApellido.contains("5")||segundoApellido.contains("6")
-                ||segundoApellido.contains("7")||segundoApellido.contains("8")||segundoApellido.contains("9")
-                ||segundoApellido.contains("0") || segundoApellido.contains("-")
-                || segundoApellido.contains("*")|| segundoApellido.contains("/")) {
+        if (secondLastName.contains("1") || secondLastName.contains("2") || secondLastName.contains("3")
+                || secondLastName.contains("4") || secondLastName.contains("5") || secondLastName.contains("6")
+                || secondLastName.contains("7") || secondLastName.contains("8") || secondLastName.contains("9")
+                || secondLastName.contains("0") || secondLastName.contains("-")
+                || secondLastName.contains("*") || secondLastName.contains("/")) {
             return false;
         }
-        if (dia.isEmpty()||dia.equals("00")||dia.equals("0")) {
+        if (day.isEmpty() || day.equals("00") || day.equals("0")) {
             return false;
         }
-        char[] letrasDias = dia.toCharArray();
-        for (char a : letrasDias) {
+        char[] lyricsDays = day.toCharArray();
+        for (char a : lyricsDays) {
             if (!(a == '0' || a == '1' || a == '2' || a == '3' || a == '4' || a == '5' || a == '6' || a == '7' || a == '8' || a == '9')) {
                 return false;
             }
         }
-        if (mes.isEmpty()||mes.equals("00")||mes.equals("0")|| mes.contains("-")|| mes.contains("*")|| mes.contains("/")) {
+        if (month.isEmpty() || month.equals("00") || month.equals("0") || month.contains("-") || month.contains("*") || month.contains("/")) {
             return false;
         }
-        if (year.isEmpty()|| year.length()!=4||year.startsWith("0")) {
+        if (year.isEmpty() || year.length() != 4 || year.startsWith("0")) {
             return false;
         }
         char[] letrasYear = year.toCharArray();

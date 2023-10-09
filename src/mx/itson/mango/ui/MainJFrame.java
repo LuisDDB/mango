@@ -215,24 +215,24 @@ public class MainJFrame extends javax.swing.JFrame {
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
 
         //Variables
-        String nombres= txfNombres.getText();
-        String primerApellido= txfApellidoPaterno.getText();
-        String segundoApellido= txfApellidoMaterno.getText();
-        String dia= txfDia.getText();
-        String mes= txfMes.getText();
+        String name= txfNombres.getText();
+        String firstLastName= txfApellidoPaterno.getText();
+        String secondLastName= txfApellidoMaterno.getText();
+        String day= txfDia.getText();
+        String month= txfMes.getText();
         String year= txfYear.getText();
         String state= cbxStates.getItemAt(cbxStates.getSelectedIndex());
-        String sexo= cbxSexo.getItemAt(cbxSexo.getSelectedIndex());
+        String sex= cbxSexo.getItemAt(cbxSexo.getSelectedIndex());
         
         //implementacion del metodo
         Negocio negocio = new Negocio();
-        if(negocio.verificarDatos(nombres,primerApellido,segundoApellido,dia,mes,year)){
-                 lblCurp.setText(negocio.generarCurp(nombres, primerApellido, segundoApellido, dia, mes, year, sexo,state));
+        if(negocio.verificarDatos(name,firstLastName,secondLastName,day,month,year)){
+                 lblCurp.setText(negocio.generarCurp(name, firstLastName, secondLastName, day, month, year, sex,state));
         }else{
             JOptionPane.showMessageDialog(
                     this, 
-                    "Los campos fueron llenados incorrectamente",
-                    "Algo salio mal!",
+                    "The fields were filled out incorrectly",
+                    "Something went wrong!",
                     JOptionPane.ERROR_MESSAGE
             );;
         }
