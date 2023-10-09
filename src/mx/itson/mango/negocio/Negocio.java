@@ -285,12 +285,11 @@ public class Negocio {
 
     }
    /*
-    * Este método encuentra la primera consonante en una cadena de texto y la devuelve.
- * Si no se encuentra ninguna consonante, devuelve un espacio en blanco (' ').
- *
- * @param nombre La cadena de texto en la que buscar la primera consonante.
- * @return La primera consonante encontrada o un espacio en blanco si no se encuentra ninguna.
-  
+    * This method finds the first consonant in a text string and returns it.
+  * If no consonant is found, returns a blank (' ').
+  *
+  * @param name The text string in which to search for the first consonant.
+  * @return The first consonant found or a blank if none are found.
     */
      public char encontrarPrimeraConsonanteInterna(String nombre) {
        
