@@ -22,6 +22,15 @@ public class Negocio {
         char primeraLetraSegundoApellido = obtenerPrimeraLetraSegundoApellido(segundoApellido);
 
         curp = curp + primeraLetraSegundoApellido;
+        //----- Gets the second letter of the second last name. -----
+        char primeraConsonanteNoInicial = encontrarSegundaConsonanteInterna(segundoApellido);
+
+        curp = curp + primeraConsonanteNoInicial;
+        
+         char primeraConsonanteNoInicial1 = encontrarSegundaConsonanteInterna1(primerApellido);
+
+        curp = curp + primeraConsonanteNoInicial1;
+
         
          
         // ----------Sacar la primera letra --------
@@ -152,6 +161,32 @@ public class Negocio {
             return 'X';
         }
     }
+     public static char encontrarSegundaConsonanteInterna(String segundoApellido) {
+        for (int i = 1; i < segundoApellido.length(); i++) {
+            char c = Character.toUpperCase(segundoApellido.charAt(i));
+            if (c != 'A' && c != 'E' && c != 'I' && c != 'O' && c != 'U') {
+                return c;
+            } else if (segundoApellido != null && !segundoApellido.isEmpty()) {
+                return segundoApellido.charAt(1);
+            } else {
+                return 'X';
+            }
+
+        }
+        return '\0';
+    }
+
+    public static char encontrarSegundaConsonanteInterna1(String Apellido) {
+        char c='a';
+        for (int i = 1; i < Apellido.length(); i++) {
+            c  = Character.toUpperCase(Apellido.charAt(i));
+            if (c != 'A' && c != 'E' && c != 'I' && c != 'O' && c != 'U') {
+              break;  
+            }    
+        } 
+        return c;
+    }
+
             
 
     /**
