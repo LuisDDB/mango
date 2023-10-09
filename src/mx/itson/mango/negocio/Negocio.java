@@ -114,6 +114,20 @@ public class Negocio {
         fechaSinEspacios = fechaSinEspacios + letrasyear[2] + letrasyear[3];
 
         curp = curp + fechaSinEspacios;
+        
+        
+        char primeraConsonante = encontrarPrimeraConsonanteInterna(nombres);
+          curp = curp + primeraConsonante;
+          
+        char valorFecha = ' '; 
+        int anoNacimiento = Integer.parseInt(year);
+        
+        if (anoNacimiento >= 2000) {
+            valorFecha = 'A'; // Si es 2000 o posterior.
+        } else {
+            valorFecha = '0'; // Si es anterior a 2000.
+        }
+        curp = curp + valorFecha + 1;
         return curp;
     }
     /**
@@ -270,51 +284,28 @@ public class Negocio {
         return verify;
 
     }
-    //------ first internal consonant (not initial) of the name-------
-      /*
-      * This code block performs the following actions:
+   /*
+    * Este método encuentra la primera consonante en una cadena de texto y la devuelve.
+ * Si no se encuentra ninguna consonante, devuelve un espacio en blanco (' ').
  *
- * Section 1: Declaration and initialization of variables.
- * - A variable 'firstConsonant' is declared and assigned the first consonant found in 'name'.
- * - A variable 'dateValue' is declared and the value '0' is assigned as the default value.
- * - A variable 'number' is declared and the value '1' is assigned.
- * - A string 'result' is created by combining 'firstConsonant', 'dateValue' and 'number'.
- * - The result is displayed in the console along with a message.
- *
- * Section 2: Processing 'name' to find the first internal consonant.
- * - Convert 'name' to lowercase to ensure consistency in processing.
- * - 'Name' is looped from the second character.
- * - If 'letter' is not a vowel ('a', 'e', ​​'i', 'o', 'u'), it is returned as the first consonant after the first letter in 'name'.
- * - If no consonant is found, blank is returned as the default value........
-      */
+ * @param nombre La cadena de texto en la que buscar la primera consonante.
+ * @return La primera consonante encontrada o un espacio en blanco si no se encuentra ninguna.
+  
+    */
      public char encontrarPrimeraConsonanteInterna(String nombre) {
        
-       char primeraConsonante = encontrarPrimeraConsonanteInterna(nombre);
+      nombre = nombre.toUpperCase();
 
-char valorFecha = '0';  //// Como no tenemos la fecha de nacimiento, establecemos un valor predeterminado '0'.
+        for (int i = 1; i < nombre.length(); i++) {
+            char letra = nombre.charAt(i);
 
-char numero = '1';
+            if (letra != 'A' && letra != 'E' && letra != 'I' && letra != 'O' && letra != 'U') {
+                return letra;
+            }
+        }
 
-String resultado = String.valueOf(primeraConsonante) + valorFecha + numero;
-
-
-nombre = nombre.toUpperCase();
-
-
-for (int i = 1; i < nombre.length(); i++) {
-    char letra = nombre.charAt(i);
-    
-
-    if (letra != 'A' && letra != 'E' && letra != 'I' && letra != 'O' && letra != 'U') {
-        return letra;
-       
+        return ' ';
     }
 }
-
-return ' ';
-
-    }
-}  
-    
 
 
