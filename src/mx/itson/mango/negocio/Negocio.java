@@ -6,7 +6,8 @@ package mx.itson.mango.negocio;
  * @author Luis, Yolanda, José, Sergio and Pedro
  */
 public class Negocio {
-
+    
+//poniendo a puebaaaaaaaaaa srgio 1
     public String generarCurp(String nombres, String primerApellido, String segundoApellido, String dia, String mes, String year, String sexo) {
         String curp = "";
          
