@@ -249,7 +249,7 @@ public class Negocio {
  * - Convert 'name' to lowercase to ensure consistency in processing.
  * - 'Name' is looped from the second character.
  * - If 'letter' is not a vowel ('a', 'e', ​​'i', 'o', 'u'), it is returned as the first consonant after the first letter in 'name'.
- * - If no consonant is found, blank is returned as the default value....
+ * - If no consonant is found, blank is returned as the default value.....
       */
      public char encontrarPrimeraConsonanteInterna(String nombre) {
        
