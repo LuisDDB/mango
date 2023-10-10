@@ -224,7 +224,7 @@ public class MainJFrame extends javax.swing.JFrame {
         String state= cbxStates.getItemAt(cbxStates.getSelectedIndex());
         String sex= cbxSexo.getItemAt(cbxSexo.getSelectedIndex());
         
-        //implementacion del metodo
+        //implementation of the method
         Negocio negocio = new Negocio();
         if(negocio.verificarDatos(name,firstLastName,secondLastName,day,month,year)){
                  lblCurp.setText(negocio.generarCurp(name, firstLastName, secondLastName, day, month, year, sex,state));

@@ -24,7 +24,7 @@ public class Negocio {
      * @return returns a String curp type
      */
     public String generarCurp(String name, String firstLastName, String secondLastName, String day, String month, String year, String sex, String state) {
-        // Igualar todas las variables a mayusculas y limpiar el texto
+        // Set all variables to uppercase and clear the text
 
         name = name.toUpperCase().replace(" ", "").replace("Á", "A").replace("É", "E").replace("Í", "I").replace("Ó", "O").replace("Ú", "U");
         firstLastName = firstLastName.toUpperCase().replace(" ", "").replace("Á", "A").replace("É", "E").replace("Í", "I").replace("Ó", "O").replace("Ú", "U");
@@ -125,7 +125,7 @@ public class Negocio {
             }
 
         }
-        //Dias en numero
+        //Days in number
         if (day.length() == 1) {
             dateWithoutSpaces = dateWithoutSpaces + "0" + day;
         } else {
@@ -159,9 +159,9 @@ public class Negocio {
         int anoNacimiento = Integer.parseInt(year);
 
         if (anoNacimiento >= 2000) {
-            valueDate = 'A'; // Si es 2000 o posterior.
+            valueDate = 'A'; // If it is 2000 or later.
         } else {
-            valueDate = '0'; // Si es anterior a 2000.
+            valueDate = '0'; // If it is before 2000.
         }
         curp = curp + valueDate + 1;
         return curp;
@@ -210,7 +210,7 @@ public class Negocio {
      * person does not have a second last name.
      *
      * @param secondSurname
-     * @return segundoApellido.charAt(0) or returns character "X".
+     * @return secondSurname.charAt(0) or returns character "X".
      */
     public static char getFirstLetterSecondLastName(String secondSurname) {
         if (secondSurname != null && !secondSurname.isEmpty()) {
@@ -360,16 +360,15 @@ public class Negocio {
     }
 
     /**
-      * Verifies whether the data you enter corresponds to its use for the
-      * curp
-      *
-      * @param name usernames
-      * @param firstLastName User's first last name
-      * @param secondLastName User's second last name
-      * @param day Birth day
-      * @param month month of birth
-      * @param year year of birth
-      * @return returns a boolean type
+     * Verifies whether the data you enter corresponds to its use for the curp
+     *
+     * @param name usernames
+     * @param firstLastName User's first last name
+     * @param secondLastName User's second last name
+     * @param day Birth day
+     * @param month month of birth
+     * @param year year of birth
+     * @return returns a boolean type
      */
     public boolean verificarDatos(String name, String firstLastName, String secondLastName, String day, String month, String year) {
         if (name.isEmpty() || name.isEmpty() || name.contains("1") || name.contains("2")
